@@ -18,8 +18,14 @@ function cityName(){
         var cityNameEl = document.querySelector('#city-name')
         cityNameEl.innerText = `City: ${data.name}`
 
-        var cityTemp = data.main.temp
-        var cityTempEl = document.querySelector('city-temp')
+        var cityTempEl = document.querySelector('#city-temp')
+        cityTempEl.innerText = `Temp: ${data.main.temp}°F`
+
+        var cityWindEl = document.querySelector('#city-wind')
+        cityWindEl.innerText = `Wind: ${data.wind.speed} MPH`
+
+        var cityHumidityEl = document.querySelector('#city-humidity')
+        cityHumidityEl.innerText = `Humidity: ${data.main.humidity}%`
     
 
         handleUviAndForecast(data)
@@ -34,14 +40,21 @@ function handleUviAndForecast (locationInformation) {
         .then(res => res.json())
         .then(function (oneCallData) {
             console.log(oneCallData)
+
+            var uvEl = document.querySelector('#city-UVIndex')
+            uvEl.innerText = `UV Index: ${oneCallData.current.uvi}`
+
             //to present to the user
             //I can manipulate my object in this function level
 
-            structureCards(oneCallData.daily)
+            structureCards(oneCallData.daiy)
         })
 }
 
 function structureCards(weatherArr) {
+
+
+
 
 }
 
