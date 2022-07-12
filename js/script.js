@@ -19,6 +19,9 @@ function cityName(){
         var cityNameEl = document.querySelector('#city-name')
         cityNameEl.innerText = `City: ${data.name}  ${dateEl}`
 
+        var icon1 = document.querySelector('#icon1')
+            icon1.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png">`
+
         var cityTempEl = document.querySelector('#city-temp')
         cityTempEl.innerText = `Temp: ${data.main.temp}°F`
 
@@ -44,11 +47,20 @@ function handleUviAndForecast (locationInformation) {
 
             // This code is for the UV index and 5 day forecast. I wasn't sure how to put it in a for loop for each day so I just did each day individualy
             var uvEl = document.querySelector('#city-UVIndex')
-            uvEl.innerText = `UV Index: ${oneCallData.current.uvi}`
+            uvEl.innerText = `UV Index: ${oneCallData.current.uvi}`;
+             if(oneCallData >= 7) {
+            $('#city-UVIndex').css('color', "red");
+             } else if (oneCallData > 3 && oneCallData < 7){
+            $('#city-UVIndex').css('color', "yellow");
+            } else{
+            $('#city-UVIndex').css('color', "green");
+             }
 
             var day1 = moment().add(1, "days").format("l");
             var dayEl = document.querySelector('#city-date')
             dayEl.innerText = `${day1}`
+            var icon = document.querySelector('#icon')
+            icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${oneCallData.daily[0].weather[0].icon}@2x.png">`
             var cityTempEl1 = document.querySelector('#city-temp-day')
             cityTempEl1.innerText = `Temp: ${oneCallData.daily[0].temp.day}°F`
 
@@ -63,6 +75,9 @@ function handleUviAndForecast (locationInformation) {
             var day2 = moment().add(2, "days").format("l");
             var dayEl2 = document.querySelector('#city-date2')
             dayEl2.innerText = `${day2}`
+            
+            var icon2 = document.querySelector('#icon2')
+            icon2.innerHTML = `<img src="http://openweathermap.org/img/wn/${oneCallData.daily[1].weather[0].icon}@2x.png">`
             var cityTempEl2 = document.querySelector('#city-temp-day2')
             cityTempEl2.innerText = `Temp: ${oneCallData.daily[1].temp.day}°F`
 
@@ -78,6 +93,8 @@ function handleUviAndForecast (locationInformation) {
             var day3 = moment().add(3, "days").format("l");
             var dayEl3 = document.querySelector('#city-date3')
             dayEl3.innerText = `${day3}`
+            var icon3 = document.querySelector('#icon3')
+            icon3.innerHTML = `<img src="http://openweathermap.org/img/wn/${oneCallData.daily[2].weather[0].icon}@2x.png">`
             var cityTempEl3 = document.querySelector('#city-temp-day3')
             cityTempEl3.innerText = `Temp: ${oneCallData.daily[2].temp.day}°F`
 
@@ -91,6 +108,8 @@ function handleUviAndForecast (locationInformation) {
             var day4 = moment().add(4, "days").format("l");
             var dayEl4 = document.querySelector('#city-date4')
             dayEl4.innerText = `${day4}`
+            var icon4 = document.querySelector('#icon4')
+            icon4.innerHTML = `<img src="http://openweathermap.org/img/wn/${oneCallData.daily[3].weather[0].icon}@2x.png">`
             var cityTempEl4 = document.querySelector('#city-temp-day4')
             cityTempEl4.innerText = `Temp: ${oneCallData.daily[3].temp.day}°F`
 
@@ -106,6 +125,8 @@ function handleUviAndForecast (locationInformation) {
             var day5 = moment().add(5, "days").format("l");
             var dayEl5 = document.querySelector('#city-date5')
             dayEl5.innerText = `${day5}`
+            var icon5 = document.querySelector('#icon5')
+            icon5.innerHTML = `<img src="http://openweathermap.org/img/wn/${oneCallData.daily[4].weather[0].icon}@2x.png">`
             var cityTempEl5 = document.querySelector('#city-temp-day5')
             cityTempEl5.innerText = `Temp: ${oneCallData.daily[4].temp.day}°F`
 
