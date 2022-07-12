@@ -1,4 +1,4 @@
-// var dateEl = moment().format("l");
+
 var apiKey = `606c74c9dfecaef70d8833a810c4eec0`
 var cityHistory = [];
 if(localStorage.getItem("history")) {
@@ -15,8 +15,9 @@ function cityName(){
       })
       .then(function (data) {
         console.log(data)
+        var dateEl = moment().format("l");
         var cityNameEl = document.querySelector('#city-name')
-        cityNameEl.innerText = `City: ${data.name}`
+        cityNameEl.innerText = `City: ${data.name}  ${dateEl}`
 
         var cityTempEl = document.querySelector('#city-temp')
         cityTempEl.innerText = `Temp: ${data.main.temp}°F`
@@ -41,9 +42,13 @@ function handleUviAndForecast (locationInformation) {
         .then(function (oneCallData) {
             console.log(oneCallData)
 
+            // This code is for the UV index and 5 day forecast. I wasn't sure how to put it in a for loop for each day so I just did each day individualy
             var uvEl = document.querySelector('#city-UVIndex')
             uvEl.innerText = `UV Index: ${oneCallData.current.uvi}`
 
+            var day1 = moment().add(1, "days").format("l");
+            var dayEl = document.querySelector('#city-date')
+            dayEl.innerText = `${day1}`
             var cityTempEl1 = document.querySelector('#city-temp-day')
             cityTempEl1.innerText = `Temp: ${oneCallData.daily[0].temp.day}°F`
 
@@ -54,6 +59,10 @@ function handleUviAndForecast (locationInformation) {
             cityHumidityEl1.innerText = `Humidity: ${oneCallData.daily[0].humidity}%`
 
 
+
+            var day2 = moment().add(1, "days").format("l");
+            var dayEl2 = document.querySelector('#city-date2')
+            dayEl2.innerText = `${day2}`
             var cityTempEl2 = document.querySelector('#city-temp-day2')
             cityTempEl2.innerText = `Temp: ${oneCallData.daily[1].temp.day}°F`
 
@@ -64,6 +73,11 @@ function handleUviAndForecast (locationInformation) {
             cityHumidityEl2.innerText = `Humidity: ${oneCallData.daily[1].humidity}%`
 
 
+
+
+            var day3 = moment().add(1, "days").format("l");
+            var dayEl3 = document.querySelector('#city-date3')
+            dayEl3.innerText = `${day3}`
             var cityTempEl3 = document.querySelector('#city-temp-day3')
             cityTempEl3.innerText = `Temp: ${oneCallData.daily[2].temp.day}°F`
 
@@ -74,6 +88,9 @@ function handleUviAndForecast (locationInformation) {
             cityHumidityEl3.innerText = `Humidity: ${oneCallData.daily[2].humidity}%`
 
 
+            var day4 = moment().add(1, "days").format("l");
+            var dayEl4 = document.querySelector('#city-date4')
+            dayEl4.innerText = `${day4}`
             var cityTempEl4 = document.querySelector('#city-temp-day4')
             cityTempEl4.innerText = `Temp: ${oneCallData.daily[3].temp.day}°F`
 
@@ -84,6 +101,11 @@ function handleUviAndForecast (locationInformation) {
             cityHumidityEl4.innerText = `Humidity: ${oneCallData.daily[3].humidity}%`
 
 
+
+
+            var day5 = moment().add(1, "days").format("l");
+            var dayEl5 = document.querySelector('#city-date5')
+            dayEl5.innerText = `${day5}`
             var cityTempEl5 = document.querySelector('#city-temp-day5')
             cityTempEl5.innerText = `Temp: ${oneCallData.daily[4].temp.day}°F`
 
