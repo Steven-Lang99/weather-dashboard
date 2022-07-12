@@ -10,7 +10,7 @@ html, body{
 }
 
 
-
+/*This code was used for the 5 day forecast to align toward the bottom*/
   #bottom{
     display: flex;
     justify-content: end;

@@ -1,10 +1,10 @@
-
+//I got some help to try an figure out the search history but I was not able to figure that out.
 var apiKey = `606c74c9dfecaef70d8833a810c4eec0`
 var cityHistory = [];
 if(localStorage.getItem("history")) {
     cityHistory = JSON.parse(localStorage.getItem("history"))
 }
-
+//This part of the code is for the city to populate with the sub areas.
 function cityName(){
     var city = document.getElementById("search").value;
     console.log(city);
@@ -36,16 +36,18 @@ function cityName(){
         cityHistory.push(data.name);
         localStorage.setItem("history", JSON.stringify(cityHistory))
       })
-    // console.log(data)
+    
 }
-
+//API for lat and lon. Also to pull 5 day forecast.
 function handleUviAndForecast (locationInformation) {
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${locationInformation.coord.lat}&lon=${locationInformation.coord.lon}&units=imperial&appid=${apiKey}`)
         .then(res => res.json())
         .then(function (oneCallData) {
             console.log(oneCallData)
 
-            // This code is for the UV index and 5 day forecast. I wasn't sure how to put it in a for loop for each day so I just did each day individualy
+            // This code is for the UV index and 5 day forecast. I wasn't sure how to put it in a for loop for each day so I just did each day individualy.
+            // Each forecast has icons and date.
+            //if statement for the UV Index to check the conditions
             var uvEl = document.querySelector('#city-UVIndex')
             uvEl.innerText = `UV Index: ${oneCallData.current.uvi}`;
              if(oneCallData >= 7) {
@@ -140,38 +142,14 @@ function handleUviAndForecast (locationInformation) {
             //to present to the user
             //I can manipulate my object in this function level
 
-            structureCards(oneCallData.daiy)
+           
         })
 }
 
-function structureCards(weatherArr) {
 
-    
-
-    // var cityWindEl1 = document.querySelector('#city-wind')
-    // cityWindEl1.innerText = `Wind: ${data.wind.speed} MPH`
-
-    // var cityHumidityEl1 = document.querySelector('#city-humidity')
-    // cityHumidityEl1.innerText = `Humidity: ${data.main.humidity}%`
-
-
-}
-
-// cityName()
+// search buttonused when city has been entered
 $('#btn').on('click', cityName)
-    // event.preventDefault();
-    // var userInput = $('#search').value
-    // var city = userInput
+    
 
 
     
-
-// fetch('')
-//   .then(function(res) {
-//     return res.json()
-//   })
-//   .then(function(data) {
-//     // Do something with the data
-//     console.log(data);
-//   });
- 
