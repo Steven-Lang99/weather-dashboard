@@ -60,7 +60,7 @@ function handleUviAndForecast (locationInformation) {
 
 
 
-            var day2 = moment().add(1, "days").format("l");
+            var day2 = moment().add(2, "days").format("l");
             var dayEl2 = document.querySelector('#city-date2')
             dayEl2.innerText = `${day2}`
             var cityTempEl2 = document.querySelector('#city-temp-day2')
@@ -75,7 +75,7 @@ function handleUviAndForecast (locationInformation) {
 
 
 
-            var day3 = moment().add(1, "days").format("l");
+            var day3 = moment().add(3, "days").format("l");
             var dayEl3 = document.querySelector('#city-date3')
             dayEl3.innerText = `${day3}`
             var cityTempEl3 = document.querySelector('#city-temp-day3')
@@ -88,7 +88,7 @@ function handleUviAndForecast (locationInformation) {
             cityHumidityEl3.innerText = `Humidity: ${oneCallData.daily[2].humidity}%`
 
 
-            var day4 = moment().add(1, "days").format("l");
+            var day4 = moment().add(4, "days").format("l");
             var dayEl4 = document.querySelector('#city-date4')
             dayEl4.innerText = `${day4}`
             var cityTempEl4 = document.querySelector('#city-temp-day4')
@@ -103,7 +103,7 @@ function handleUviAndForecast (locationInformation) {
 
 
 
-            var day5 = moment().add(1, "days").format("l");
+            var day5 = moment().add(5, "days").format("l");
             var dayEl5 = document.querySelector('#city-date5')
             dayEl5.innerText = `${day5}`
             var cityTempEl5 = document.querySelector('#city-temp-day5')
